@@ -14,11 +14,13 @@ response=requests.get(url6)
  
 if response.ok:
     soup=BeautifulSoup(response.text,"html.parser")
-    nom_mcat =soup.find('div', class_="collection-hero__title-wrapper")
+    nom_mcat3 =soup.find('li', class_="site-nav--active")
+    print("catégorie: ",nom_mcat3.text)
     sty=soup.find_all('li', class_="grid__item grid__item--collection-template small--one-half medium-up--one-quarter")
-    print("la categorie",nom_mcat.text,"\n")
-    for(i,u) in enumerate(sty):
+    verify=soup.find_all('div',class_="grid-view-item product-card")
+    for(i,u) in enumerate(verify):
         print("----------------$$$$$$$$$$--------------")
+        print("article: n°",i)
         sty2=u.find('a', class_="grid-view-item__link grid-view-item__image-container full-width-link")
         price=u.find('span', class_="price-item price-item--sale")
         imag=u.find('img')

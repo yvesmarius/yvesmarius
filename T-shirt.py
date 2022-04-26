@@ -13,10 +13,11 @@ response=requests.get(url3)
  
 if response.ok:
     soup=BeautifulSoup(response.text,"html.parser")
-    nom_mcat2 =soup.find('div',class_="section-header text-center")
+    nom_mcat3 =soup.find('li', class_="site-nav--active")
+    print("catégorie: ",nom_mcat3.text)
     art= soup.find_all('li',class_="grid__item grid__item--collection-template small--one-half medium-up--one-quarter")
-    print("la categorie",nom_mcat2.text,"\n")
-    for (i, u) in enumerate(art):
+    verify=soup.find_all('div',class_="grid-view-item product-card")
+    for (i, u) in enumerate(verify):
         print("----------------$$$$$$$$$$--------------")
         print("article: n°",i)
         art2=u.find('div',class_="h4 grid-view-item__title product-card__title")
