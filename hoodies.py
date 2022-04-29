@@ -6,12 +6,8 @@ import re
 url2=["https://just-scrape-it.com/collections/hoodie-sweat","https://just-scrape-it.com/collections/tshirt-t-shirt-tee-shirt",
 "https://just-scrape-it.com/collections/maillots-ete",
 "https://just-scrape-it.com/collections/stickers"]
-sauce = urllib.request.urlopen ("https://just-scrape-it.com").read ()
-soup = BeautifulSoup (sauce, 'html.parser')
-pool0=soup.find_all('ul', class_="site-nav list--inline " ,id="SiteNav")
-for (i,u) in enumerate (pool0):
-    link=u.find('li')
-    print(link)
+
+
     # print(link.attrs['href'])
 for i in url2: 
     response=requests.get(i)
