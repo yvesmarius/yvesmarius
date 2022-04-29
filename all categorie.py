@@ -10,7 +10,7 @@ up=[]
 url2=["https://just-scrape-it.com/collections/hoodie-sweat","https://just-scrape-it.com/collections/tshirt-t-shirt-tee-shirt",
 "https://just-scrape-it.com/products/cagoule-scrape-original","https://just-scrape-it.com/collections/maillots-ete",
 "https://just-scrape-it.com/collections/stickers"]
-for i  in url2:
+for i in url2:
     response=requests.get(i)
     soup=BeautifulSoup(response.text,"html.parser")
     nom_mcat3 =soup.find('li', class_="site-nav--active")
