@@ -28,3 +28,11 @@ for (i,u) in enumerate(navigation):
     press=u.find_all('div', class_="publishTime")
     print(press)
     # print(f"Request received from following IP:\n{res.text}")
+saver={'http': 'http://51.38.191.151:80',
+'http': 'http://51.91.157.66:80',
+'http': 'http://54.36.26.122:80',
+'http': 'http://151.106.17.126:1080',
+'http': 'http://89.234.182.234:80',
+'http': 'http://188.213.31.16:8000',
+'http': 'http://137.74.93.21:1080',
+'http': 'http://51.79.250.224:3128'}
