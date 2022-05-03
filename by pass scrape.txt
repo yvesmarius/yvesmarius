@@ -1,0 +1,7 @@
+https://fr.scrapingpass.com/blog/top-7-des-procurations-et-listes-de-procurations-gratuites-disponibles-gratuitement-avec-leurs-avantages-et-inconvenients/
+https://fr.scrapingpass.com/blog/quest-ce-que-user-agent-et-comment-faire-pivoter-les-user-agents-en-utilisant-python/
+https://www.zyte.com/learn/use-proxies-for-web-scraping/
+https://free-proxy-list.net/
+https://blog.finxter.com/rotate-proxies-in-python/
+https://www.proxiesapi.com/blog/biulding-a-simple-proxy-rotator-with-python-and-be.html.php
+https://hidemy.name/en/proxy-list/?country=ARAMBDBYBZBRBGKHCACLCNCOCWCYCZDOECEGFIFRGEDEGRGTGNHNHKHUINIDIRIQIEITJPKZKRKGLTMYMLMXMDMNNPNLNGPKPAPYPEPLPRRORUSGSKSISOZAESCHSYTWTHTRUAGBUSUZVEVNVG&type=s#list

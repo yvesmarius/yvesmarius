@@ -1,13 +1,24 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import urllib.request, urllib.error
-import re
-url2=["https://just-scrape-it.com/collections/hoodie-sweat","https://just-scrape-it.com/collections/tshirt-t-shirt-tee-shirt",
-"https://just-scrape-it.com/collections/maillots-ete",
-"https://just-scrape-it.com/collections/stickers"]
 
-
+url2="https://just-scrape-it.com/"
+l={"collections/hoodie-sweat","collections/tshirt-t-shirt-tee-shirt","collections/maillots-ete","collections/stickers"}
+up=[]
+for i in l:
+    links=url2+i
+    up.append(links)
+with open("save1.json",'r') as f:
+    données=json.load(f)
+données.append(up)        
+with open("save1.json",'w',encoding='utf8') as f:
+    data_links=json.dump(données,f,ensure_ascii=False,indent=4)    
+response=requests.get(données.index(up,0)) 
+soup = BeautifulSoup (response, 'html.parser')
+pool0=soup.find_all('ul', class_="site-nav list--inline " ,id="SiteNav")
+for (i,u) in enumerate (pool0):
+    link=u.find('li')
+    print(link)
     # print(link.attrs['href'])
 for i in url2: 
     response=requests.get(i)

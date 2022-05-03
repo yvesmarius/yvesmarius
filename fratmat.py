@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import scrapy
+from pprint import pprint
 import json
 url="https://www.fratmat.info/"
 l={"POLITIQUE","ÉCONOMIES","SOCIÉTÉ","SPORTS","CULTURE","RÉGIONS"}
@@ -11,13 +11,15 @@ for i in l:
 with open("save.json",'w',encoding='utf8') as f:
     data_links=json.dump(ml,f,ensure_ascii=False,indent=4)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}    
-for i in ml :   
-    response = requests.get(i,headers=headers)
+
+
+
+  
+response = requests.get('https://www.fratmat.info/',headers=headers)
 soup=BeautifulSoup(response.text,"html.parser")
-print(soup)
-navigation=soup.find_all('div', class_="ajaxArticles")
+navigation=soup.find_all('div', class_="article-info")
 for (i,u) in enumerate(navigation):
-    press=u.find_all('div', class_="article-info")
-    print(press)
+    press=u.find_all('a')
+    print(press['href'])
 
     
