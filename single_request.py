@@ -1,4 +1,5 @@
-from weakref import proxy
+
+
 import requests
 from bs4 import BeautifulSoup
 import random
@@ -11,32 +12,62 @@ user_agent_list = [
 ]
 
 for i in range(1,4):
-    # Pick a random user agent
+
     user_agent = random.choice(user_agent_list)
     headers = {'User-Agent': user_agent}
-proxy={
-'http': 'http://160.19.232.85:3128'	,
-}
-
+proxyR=['160.19.232.85:3128',
+'41.65.163.86:1981',
+'85.25.111.162:5566',
+'109.195.23.223:34031',
+'64.201.163.133:80',
+'50.217.22.108:80',
+'50.206.25.107:80',
+'50.202.210.119:80']
+for i in range(10000):
+    proxyR2=random.choice(proxyR)
+    proxies = {
+         'http': 'http://' + proxyR2,         
+         'http': 'http://' + proxyR2}
    
-url=["https://www.fratmat.info/politique",
-"https://www.fratmat.info/economie",
-"https://www.fratmat.info/societe",
-"https://www.fratmat.info/sports",
-"https://www.fratmat.info/culture",
-"https://www.fratmat.info/region"]
+url=['https://www.fratmat.info/morearticles/politique?pgno=1','https://www.fratmat.info/morearticles/conomie?pgno=1','https://www.fratmat.info/morearticles/societe?pgno=1','https://www.fratmat.info/morearticles/sports?pgno=1','https://www.fratmat.info/morearticles/culture?pgno=1',
+'https://www.fratmat.info/morearticles/regions','https://www.fratmat.info/morearticles/tranger?pgno=1']
 for i in url:
-    response = requests.get(i,proxies=proxy,headers=headers)
-    print(response.json())
+    response = requests.get(i,proxies=proxies,headers=headers)
     soup = BeautifulSoup(response.text,"html.parser")
-    navigation=soup.find('div', class_="col-md-6 col-xs-12")
-    print(navigation)
-for (i,u) in enumerate(navigation):
-    print("article:n",i)
-    press1=u.find_all('div', class_="article-info")
-for(i,u) in enumerate(press1):
-    press2=u.find('a')
-    print(press2.text) 
+    # children = soup.select_one('.col-md-6:nth-child(1)')
+    final=soup.select('.fratmat-more-articles .article-info')
+    final2=soup.select('.fratmat-more-articles .layout-ratio')
+    final3=soup.select('.fratmat-more-articles')
+    final4=soup.select('element.style')
+    for span in final4:
+        print(span.text)  
+    for i in (final3):
+        tilte3=i.find('a')   
+    for (i,u) in enumerate (final):
+        print("----------------$$$$$$$$$$--------------")
+        print("article: n°",i)
+        print(tilte3.text)
+        title=u.find_all('a',class_="article-title fontSize23Height81")
+        
+        for i in (final2):
+            title2=u.find('img')
+        for a in title:
+            print('titre:',a.text.strip())
+            print('lien:',a['href'])
+            print('image:',title2['src'],'\n')
+             
+              
+    # for a in children1:
+    #     print(a.text)
+    #     print(a['href'])
+       
+# for (i,u) in enumerate(children2):
+#     print('article n°:',i)
+#     t=u.select('.article-title')
+#     images=u.select('.layout-ratio img')
+#     print(images['src'])
+#     print('le titre :',t.text)
+#     print('lien :',t['href'])
     
     
     # print('titre:',press1.text,'\t')

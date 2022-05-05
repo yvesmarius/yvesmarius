@@ -3,24 +3,17 @@ from bs4 import BeautifulSoup
 import json
 
 url2="https://just-scrape-it.com/"
-l={"collections/hoodie-sweat","collections/tshirt-t-shirt-tee-shirt","collections/maillots-ete","collections/stickers"}
+l="collections/hoodie-sweat","collections/tshirt-t-shirt-tee-shirt","collections/maillots-ete","collections/stickers"
 up=[]
 for i in l:
     links=url2+i
     up.append(links)
-with open("save1.json",'r') as f:
-    données=json.load(f)
-données.append(up)        
-with open("save1.json",'w',encoding='utf8') as f:
-    data_links=json.dump(données,f,ensure_ascii=False,indent=4)    
-response=requests.get(données.index(up,0)) 
-soup = BeautifulSoup (response, 'html.parser')
-pool0=soup.find_all('ul', class_="site-nav list--inline " ,id="SiteNav")
-for (i,u) in enumerate (pool0):
-    link=u.find('li')
-    print(link)
+print(up)
+# enlever les caracteres bizzare dans fichier json
+# data_links=json.dump(données,f,ensure_ascii=False,indent=4)
+     
     # print(link.attrs['href'])
-for i in url2: 
+for i in up: 
     response=requests.get(i)
     if response.ok:    
         soup=BeautifulSoup(response.text,"html.parser")
@@ -41,7 +34,7 @@ for i in url2:
     #     final0=u.find('span', class_="price-item price-item--regular")
 
         # print("nom: ",arttt.text)    
-    for(i,u) in enumerate (verify,):
+    for(i,u) in enumerate (verify):
         print("----------------$$$$$$$$$$--------------")
         print("article: n°",i)
         verify2=u.find('div',class_="h4 grid-view-item__title product-card__title")
